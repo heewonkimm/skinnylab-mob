@@ -101,7 +101,7 @@ body {
 }
 
 main {
-	flex: 1px;
+	flex: 1;
 }
 
 /* 레이아웃 */
@@ -112,6 +112,7 @@ main {
 	left: 0;
 	background-color: rgba(255,255,255,255);
 	z-index: 130;
+	overflow: hidden;
 	transition: all .3s;
 }
 .header .header-top {
@@ -157,19 +158,21 @@ main {
     display: flex;
     align-items: center;
     height: 40px;
+	padding: 0 10px;
 	overflow: hidden;
 }
 .header .gnb-list {
-    display: flex;
-	justify-content: space-between;
-    column-gap: 20px;
+    justify-content: space-between;
 	width: 100%;
-    font-size: 16px;
-    padding: 0 20px;
+	font-size: 16px;
+}
+.header .gnb-item {
+	width: auto;
 }
 .header .gnb-link {
     position: relative;
 	display: block;
+	padding: 8px 13px;
 }
 .header .gnb-link.dot::after {
     content: '';
@@ -503,7 +506,9 @@ body.scrollLock .menu-inner {
 	padding: 0 30px;
 }
 .menu-inner .menu-link {
-	display: block;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .menu-inner .menu-link .ico {
 	display: block;
@@ -607,6 +612,7 @@ body.scrollLock .menu-inner {
 	color: #353537;
 	background-color: #fff;
 	padding-left: 45px;
+	padding-right: 35px;
 }
 .menu-inner .sub-link {
 	display: block;
@@ -937,13 +943,14 @@ body.scrollLock .menu-bg {
 	margin-bottom: 12px;
 }
 .sc-pick .tag-wrap .tag {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	width: 46px;
 	height: 20px;
 	color: #fff;
-	text-align: center;
 	margin-right: 2px;
-	padding-top: 1.5px;
+	padding-top: 2px;
 }
 .sc-pick .tag-wrap .tag.black {
 	background-color: #353537;

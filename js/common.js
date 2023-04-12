@@ -1,4 +1,10 @@
 // 스와이퍼
+const gnbSwiper = new Swiper(".gnb-swiper", {
+  slidesPerView: 'auto',
+  autoplay: false,
+});
+
+
 const mainSwiper = new Swiper('.main-swiper', {
   slidesPerView: 'auto',
   loop: true,
@@ -140,39 +146,21 @@ sectionEl.forEach(function (l) {
 
 
 //헤더 스크롤시 height 변화
-let didScroll;
-let lastScrollTop = 0;
-const delta = 5;
-const navbarHeight = $('.header').outerHeight();
+$(function(){
+  let lastScrollTop = 0;
+  const delta = 15;
 
-$(window).scroll(function (event) {
-  didScroll = true;
+  $(window).scroll(function(event){
+    const st = $(this).scrollTop();
+    if(Math.abs(lastScrollTop - st) <= delta) return;
+    if((st > lastScrollTop) && (lastScrollTop > 0)) {
+      $('.header').addClass('nav-up');
+    }else {
+      $('.header').removeClass('nav-up');
+    };
+    lastScrollTop = st;
+  });
 });
-
-setInterval(function () {
-  if (didScroll) {
-    hasScrolled();
-    didScroll = false;
-  }
-}, 250);
-
-function hasScrolled() {
-  var st = $(this).scrollTop();
-
-  if (Math.abs(lastScrollTop - st) <= delta)
-    return;
-
-  if (st > lastScrollTop && st > navbarHeight) {
-    // Scroll Down
-    $('.header').addClass('nav-up');
-  } else {
-    // Scroll Up
-    if (st + $(window).height() < $(document).height()) {
-      $('.header').removeClass('nav-up')
-    }
-  }
-  lastScrollTop = st;
-}
 
 
 //메뉴창 열고 닫기
@@ -230,6 +218,6 @@ opList.addEventListener('click', function (event) {
 
 
 //footer toggle
-$(".familysite").click(function () {
+$(".familysite .site-button").click(function () {
   $(".site-list").slideToggle(200);
 })
