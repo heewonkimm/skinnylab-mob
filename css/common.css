@@ -483,15 +483,12 @@ body.scrollLock .menu-inner {
 	padding: 18px 30px;
 }
 .menu-inner .close-btn {
-	margin-left: auto;
-}
-.menu-inner .close-btn {
 	width: 25px;
-	height: 0;
+	height: 25px;
 	background-image: url(../img/ico-close.jpg);
 	background-size: 25px 25px;
 	background-repeat: no-repeat;
-	padding-top: 25px;
+	margin-left: auto;
 	overflow: hidden;
 }
 .menu-inner .util {
